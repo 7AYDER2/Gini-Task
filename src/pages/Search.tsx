@@ -2,11 +2,13 @@ import { ArrowRight, Search } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ProductCard from "@/views/Search/ProductCard";
+import { useNavigate } from 'react-router-dom';
 
 function SearchPage() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q") || "";
   const [searchQuery, setSearchQuery] = useState(query);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setSearchQuery(query);
@@ -19,7 +21,7 @@ function SearchPage() {
   return (
     <div className="px-6 p-8 mb-5 flex flex-col gap-4">
       <div className="flex gap-3">
-        <ArrowRight size={24} />
+        <ArrowRight size={24} onClick={() => navigate(`/`)} />
         <h2 className="text-xl">تجار جني</h2>
       </div>
         <div className="relative mb-6">
